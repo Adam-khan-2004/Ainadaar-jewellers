@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Order check | AINADAR</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extras.css">
+
+  <style>
+    .order-page{max-width:760px;margin:0 auto;padding:40px 22px 80px}
+    .order-page h1{font:500 34px var(--serif);margin:0 0 6px}
+    .order-banner{padding:14px 16px;border-radius:8px;font-size:13px;line-height:1.7;margin:18px 0}
+    .order-banner.ok{background:#eaf6ee;color:#245a36}
+    .order-banner.bad{background:#fdecee;color:#9b2c3e}
+    .order-row{display:grid;grid-template-columns:84px 1fr auto;gap:16px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+    .order-row img{width:84px;height:104px;object-fit:cover;border-radius:4px}
+    .order-row h3{font:500 17px var(--serif);margin:0 0 4px}
+    .order-row small{display:block;font-size:11px;line-height:1.7;color:#98847f}
+    .order-sku{font-weight:600;letter-spacing:.08em;color:var(--pink-dark)}
+    .order-row.unknown{color:#9b2c3e}
+    .order-total{display:flex;justify-content:space-between;padding:22px 0;font:500 22px var(--serif)}
+    .order-note{font-size:12px;line-height:1.8;color:#98847f}
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="index.html">
+      <img src="assets/images/ainadar-logo-from-poster.png" alt="AINADAR">
+    </a>
+  </header>
+
+  <main class="order-page" id="order"><p>Checking order…</p></main>
+
+  <script src="js/products.js"></script>
+  <script>
+    const money = n => "Rs. " + Number(n).toLocaleString("en-PK");
+    const esc = v => String(v ?? "").replace(/[&<>"']/g, c => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[c]);
+
+    // KEEP IDENTICAL to orderHash in js/shop.js (same salt text)
+    function orderHash(str) {
+      let h = 0x811c9dc5;
+      const s = str + "|ainadar-2026";
+      for (let i = 0; i < s.length; i++) {
+        h ^= s.charCodeAt(i);
+        h = Math.imul(h, 0x01000193) >>> 0;
+      }
+      return h.toString(16).padStart(8, "0");
+    }
+
+    const root = document.querySelector("#order");
+    const q = new URLSearchParams(location.search);
+    const oid = q.get("o") || "";
+    const raw = q.get("d") || "";
+    const chk = q.get("c") || "";
+
+    let verified = false;
+    let rows = [];
+
+    try {
+      const s = atob(raw.replace(/-/g, "+").replace(/_/g, "/"));
+      verified = orderHash(oid + "|" + s) === chk;
+      rows = s.split(",").map(x => {
+        const [id, n] = x.split(":");
+        return { id, n: parseInt(n, 10) };
+      }).filter(r => r.id && r.n > 0 && r.n < 100);
+    } catch (err) {
+      rows = [];
+    }
+
+    if (!rows.length) {
+      root.innerHTML = `
+        <h1>No order found</h1>
+        <p class="order-note">This link has no readable order details. Please ask the buyer to send the message again.</p>`;
+    } else {
+      let total = 0;
+      let hasUnknown = false;
+
+      const list = rows.map(r => {
+        const p = products.find(x => x.id === r.id);
+        if (!p) {
+          hasUnknown = true;
+          return `<div class="order-row unknown"><span></span>
+            <div><h3>Unknown item</h3><small>Code: ${esc(r.id)} × ${r.n}</small></div><span></span></div>`;
+        }
+        const line = p.price * r.n;
+        total += line;
+        return `
+          <div class="order-row">
+            <a href="product.html?id=${encodeURIComponent(p.id)}">
+              <img src="${p.images[0]}" alt="${esc(p.name)}"
+                   onerror="this.onerror=null;this.src='assets/images/image-placeholder.svg';">
+            </a>
+            <div>
+              <h3>${esc(p.name)}</h3>
+              <small><span class="order-sku">${esc(p.sku || p.id.toUpperCase())}</span> · ${esc(p.category)}</small>
+              <small>${money(p.price)} × ${r.n}</small>
+              <small><a href="product.html?id=${encodeURIComponent(p.id)}" style="text-decoration:underline">Open product page</a></small>
+            </div>
+            <strong>${money(line)}</strong>
+          </div>`;
+      }).join("");
+
+      const banner = verified && !hasUnknown
+        ? `<div class="order-banner ok">✓ Link verified. This is exactly what the buyer checked out with.</div>`
+        : `<div class="order-banner bad">⚠ ${hasUnknown ? "Some items are not in your catalogue." : "This link was changed after it was created."}
+           Do not rely on it. Ask the buyer to send a fresh order message.</div>`;
+
+      root.innerHTML = `
+        <p class="eyebrow">ORDER CHECK</p>
+        <h1>Order ${esc(oid)}</h1>
+        ${banner}
+        ${list}
+        <div class="order-total"><span>Total (without delivery)</span><span>${money(total)}</span></div>
+        <p class="order-note">Prices come from your current catalogue, not from the link, so buyers cannot change them.
+        Confirm the order, delivery charges and payment with the buyer in chat.</p>`;
+    }
+  </script>
+</body>
+</html>

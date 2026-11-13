@@ -1,0 +1,1690 @@
+
+/* =========================================
+   AINADAR — HANDMADE JEWELLERY
+   Premium Pink & White Website Theme
+========================================= */
+
+:root {
+  --ink: #342522;
+  --muted: #887975;
+  --pink: #e99ab3;
+  --pink-dark: #c87592;
+  --blush: #fff1f4;
+  --paper: #fffdfc;
+  --line: #f0e3e2;
+  --rose-gold: #bd8790;
+
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "DM Sans", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================================
+   ANNOUNCEMENT BAR
+========================================= */
+
+.announcement {
+  min-height: 32px;
+  padding: 7px 12px;
+  background: #fae8ed;
+  color: #7c5860;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.announcement span {
+  color: var(--pink-dark);
+  font-size: 15px;
+}
+
+/* =========================================
+   HEADER AND LOGO
+========================================= */
+
+.site-header {
+  min-height: 94px;
+  padding: 0 clamp(22px, 7vw, 104px);
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  background: rgba(255, 253, 252, .96);
+
+  position: sticky;
+  top: 0;
+  z-index: 20;
+
+  border-bottom: 1px solid rgba(240, 227, 226, .7);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Main website logo */
+
+.wordmark {
+  width: 145px;
+  height: 82px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.wordmark img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  /* Helps a light logo background blend into the header */
+  mix-blend-mode: multiply;
+
+  transition: transform .3s ease;
+}
+
+.wordmark:hover img {
+  transform: scale(1.04);
+}
+
+/* Navigation */
+
+.main-nav {
+  display: flex;
+  gap: clamp(20px, 3.2vw, 48px);
+  align-items: center;
+}
+
+.main-nav a {
+  font-size: 10px;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: #685753;
+  transition: color .2s ease;
+}
+
+.main-nav a:hover {
+  color: var(--pink-dark);
+}
+
+/* Shopping bag button */
+
+.bag-button,
+.icon-button {
+  border: 0;
+  background: none;
+  color: var(--ink);
+}
+
+.bag-button {
+  justify-self: end;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.bag-icon {
+  font-size: 20px;
+}
+
+.cart-count {
+  width: 21px;
+  height: 21px;
+
+  border-radius: 50%;
+  background: var(--blush);
+
+  display: grid;
+  place-items: center;
+
+  font-size: 10px;
+  color: var(--pink-dark);
+}
+
+.mobile-menu-button {
+  display: none;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+  min-height: 650px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  padding: 70px clamp(28px, 10vw, 150px) 82px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      ellipse at 78% 45%,
+      #fff0f3 0,
+      rgba(255, 240, 243, .45) 25%,
+      transparent 55%
+    ),
+    linear-gradient(115deg, #fffdfc, #fff9fa);
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+  width: 420px;
+  height: 420px;
+
+  border: 1px solid rgba(229, 165, 183, .16);
+  border-radius: 50%;
+
+  right: -170px;
+  top: -190px;
+
+  pointer-events: none;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 500px;
+}
+
+.eyebrow {
+  font-size: 9px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--pink-dark);
+  font-weight: 600;
+  margin: 0 0 23px;
+}
+
+.eyebrow-line {
+  display: inline-block;
+  width: 27px;
+  height: 1px;
+  background: var(--pink);
+  vertical-align: middle;
+  margin-right: 9px;
+}
+
+.hero h1 {
+  font: 500 clamp(48px, 6vw, 82px)/1.08 var(--serif);
+  letter-spacing: -.045em;
+  margin: 0 0 22px;
+}
+
+.hero h1 em,
+.section-heading h2 em,
+.story-copy h2 em,
+.handmade-section h2 em {
+  font-weight: 400;
+  color: var(--pink-dark);
+}
+
+.hero-description {
+  font-size: 13px;
+  line-height: 2;
+  color: #816f6b;
+  max-width: 380px;
+  margin: 0 0 29px;
+}
+
+/* Main buttons */
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 35px;
+
+  background: var(--ink);
+  color: #fff8f8;
+
+  padding: 16px 20px 16px 23px;
+
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+
+  border: 1px solid var(--ink);
+
+  transition:
+    transform .25s,
+    background .25s,
+    box-shadow .25s;
+
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: var(--pink-dark);
+  border-color: var(--pink-dark);
+
+  transform: translateY(-3px);
+
+  box-shadow: 0 12px 25px #d58da433;
+}
+
+.primary-button span {
+  font-size: 16px;
+}
+
+.hero-note {
+  margin-top: 36px;
+  font: italic 13px var(--serif);
+  color: #967e79;
+}
+
+.tiny-flower {
+  color: var(--pink);
+  font-style: normal;
+  margin-right: 8px;
+}
+
+/* =========================================
+   DECORATIVE 3D HERO ART
+========================================= */
+
+.hero-art {
+  height: 450px;
+
+  position: relative;
+
+  display: grid;
+  place-items: center;
+
+  perspective: 900px;
+}
+
+.hero-orbit {
+  position: absolute;
+  border: 1px solid rgba(219, 153, 173, .35);
+  border-radius: 50%;
+  transform: rotate(-24deg);
+}
+
+.orbit-one {
+  width: 370px;
+  height: 420px;
+}
+
+.orbit-two {
+  width: 285px;
+  height: 350px;
+  transform: rotate(27deg);
+}
+
+.hero-sculpture {
+  width: 240px;
+  height: 310px;
+
+  position: relative;
+
+  transform: rotateY(-13deg) rotateX(5deg);
+
+  filter: drop-shadow(22px 25px 18px rgba(106, 64, 68, .14));
+
+  animation: float 6s ease-in-out infinite;
+}
+
+.sculpture-ring {
+  position: absolute;
+
+  width: 150px;
+  height: 220px;
+
+  border: 13px solid #d9a4a9;
+  border-bottom-color: #f7d9dd;
+  border-left-color: #b98288;
+
+  border-radius: 50%;
+
+  transform: rotate(27deg);
+
+  left: 42px;
+  top: 46px;
+
+  box-shadow:
+    inset 4px 3px 10px #fff8,
+    5px 8px 13px #8b5c5c2a;
+}
+
+.sculpture-ring::after {
+  content: "";
+
+  position: absolute;
+  inset: 5px;
+
+  border: 1px solid #fff9;
+  border-radius: 50%;
+}
+
+.sculpture-pearl {
+  position: absolute;
+
+  width: 39px;
+  height: 39px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle at 30% 25%,
+    #fff 0,
+    #fff9 13%,
+    #f7e4e2 38%,
+    #c9a6a1 100%
+  );
+
+  box-shadow: 8px 10px 16px #76504b30;
+}
+
+.pearl-one {
+  top: 29px;
+  left: 120px;
+}
+
+.pearl-two {
+  bottom: 25px;
+  left: 47px;
+  width: 25px;
+  height: 25px;
+}
+
+.sculpture-stem {
+  position: absolute;
+
+  width: 2px;
+  height: 110px;
+
+  background: #98756b;
+
+  right: 18px;
+  top: 110px;
+
+  transform: rotate(22deg);
+}
+
+.sculpture-spark {
+  position: absolute;
+  color: #d58da2;
+}
+
+.spark-one {
+  font-size: 36px;
+  top: 0;
+  right: 4px;
+}
+
+.spark-two {
+  font-size: 22px;
+  bottom: 30px;
+  right: 0;
+}
+
+.art-caption {
+  position: absolute;
+  bottom: 27px;
+  right: 7%;
+
+  display: flex;
+  flex-direction: column;
+
+  text-align: right;
+}
+
+.art-caption span {
+  font-size: 8px;
+  letter-spacing: .2em;
+  color: #a88d87;
+}
+
+.art-caption strong {
+  font: italic 30px var(--serif);
+  color: #bd8392;
+}
+
+.hero-stamp {
+  position: absolute;
+  left: 4%;
+  top: 12%;
+
+  width: 74px;
+  height: 74px;
+
+  border: 1px solid #e8bdc8;
+  border-radius: 50%;
+
+  display: grid;
+  place-content: center;
+
+  text-align: center;
+
+  font-size: 8px;
+  line-height: 1.5;
+  letter-spacing: .16em;
+
+  color: #a77985;
+
+  transform: rotate(-13deg);
+}
+
+.hero-stamp b {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.hero-bottom-label {
+  position: absolute;
+  bottom: 24px;
+  left: clamp(28px, 10vw, 150px);
+
+  font-size: 8px;
+  letter-spacing: .23em;
+  color: #b29e99;
+}
+
+/* =========================================
+   BRAND VALUES
+========================================= */
+
+.intro-strip {
+  padding: 25px 12%;
+
+  display: flex;
+  justify-content: space-around;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  background: #fff;
+}
+
+.intro-strip div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.intro-strip span {
+  font: italic 13px var(--serif);
+  color: var(--pink-dark);
+}
+
+.intro-strip p {
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #776561;
+}
+
+/* =========================================
+   GENERAL SECTION STYLING
+========================================= */
+
+.section {
+  padding: 110px clamp(25px, 9vw, 132px);
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 42px;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 14px;
+}
+
+.section-heading h2,
+.story-copy h2 {
+  font: 500 clamp(34px, 4vw, 52px)/1.15 var(--serif);
+  letter-spacing: -.025em;
+  margin: 0;
+}
+
+.section-aside {
+  font: italic 14px/1.8 var(--serif);
+  color: #9a8580;
+  margin: 0 0 4px;
+}
+
+/* =========================================
+   COLLECTION CARDS
+========================================= */
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.category-card {
+  min-width: 0;
+}
+
+.category-visual {
+  height: 330px;
+
+  position: relative;
+  overflow: hidden;
+
+  display: grid;
+  place-items: center;
+
+  transition: transform .5s;
+}
+
+.category-card:hover .category-visual {
+  transform: translateY(-6px);
+}
+
+.category-earrings .category-visual {
+  background: linear-gradient(140deg, #f8e7e9, #f5dfe2 55%, #eed2d7);
+}
+
+.category-bracelets .category-visual {
+  background: linear-gradient(140deg, #f4e9e2, #f0dcd3 55%, #e9d0c7);
+}
+
+.category-handcuffs .category-visual {
+  background: linear-gradient(140deg, #f7e9ed, #f0dbe4 55%, #e7cbd7);
+}
+
+.category-number {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  font-size: 8px;
+  letter-spacing: .18em;
+  color: #8f7374;
+}
+
+.visual-word {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+
+  font: italic 30px/.92 var(--serif);
+  color: #fff9f8;
+
+  text-shadow: 0 2px 12px #76565b30;
+}
+
+/* Earrings illustration */
+
+.earring-art {
+  height: 160px;
+  width: 120px;
+
+  position: relative;
+
+  filter: drop-shadow(10px 15px 12px #8d59652b);
+}
+
+.earring-art i {
+  position: absolute;
+
+  width: 45px;
+  height: 92px;
+
+  border: 5px solid #c49b69;
+  border-radius: 50%;
+
+  top: 35px;
+  transform: rotate(12deg);
+}
+
+.earring-art i:first-child {
+  left: 5px;
+}
+
+.earring-art i:last-child {
+  right: 5px;
+  top: 12px;
+  transform: rotate(-12deg);
+}
+
+.earring-art::before,
+.earring-art::after {
+  content: "";
+
+  position: absolute;
+
+  width: 13px;
+  height: 13px;
+
+  background: radial-gradient(circle at 30% 25%, #fff, #d8b9b2 75%);
+
+  border-radius: 50%;
+  z-index: 1;
+
+  top: 22px;
+  left: 20px;
+}
+
+.earring-art::after {
+  left: 88px;
+  top: 0;
+}
+
+/* Bracelet illustration */
+
+.bracelet-art {
+  width: 180px;
+  height: 160px;
+
+  position: relative;
+  transform: rotate(-18deg);
+}
+
+.bracelet-art i {
+  position: absolute;
+  inset: 20px 0;
+
+  border: 6px solid #c49b69;
+  border-radius: 50%;
+
+  box-shadow: 4px 8px 14px #815b4c26;
+}
+
+.bracelet-art i:nth-child(2) {
+  inset: 30px 10px;
+  border-color: #e5c5a0;
+}
+
+.bracelet-art i:nth-child(3) {
+  inset: 40px 20px;
+  border-color: #b98570;
+}
+
+/* Hand cuff illustration */
+
+.cuff-art {
+  width: 180px;
+  height: 160px;
+
+  border: 12px solid #c49b69;
+  border-bottom-color: transparent;
+
+  border-radius: 50%;
+
+  transform: rotate(-22deg);
+
+  filter: drop-shadow(8px 12px 10px #805b4b30);
+
+  position: relative;
+}
+
+.cuff-art::before,
+.cuff-art::after {
+  content: "";
+
+  position: absolute;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+  background: #fff1d8;
+
+  top: 3px;
+}
+
+.cuff-art::before {
+  left: -8px;
+}
+
+.cuff-art::after {
+  right: -8px;
+}
+
+/* Category text */
+
+.category-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 3px;
+}
+
+.category-meta h3 {
+  font: 500 23px var(--serif);
+  margin: 0 0 5px;
+}
+
+.category-meta p {
+  font-size: 10px;
+  color: #9a8580;
+  margin: 0;
+}
+
+.round-arrow {
+  width: 34px;
+  height: 34px;
+
+  border: 1px solid #ead9d9;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  color: #a87584;
+
+  transition: .2s;
+}
+
+.category-card:hover .round-arrow {
+  background: var(--pink-dark);
+  color: white;
+  border-color: var(--pink-dark);
+}
+
+/* =========================================
+   PRODUCT SHELVES
+========================================= */
+
+.shelf-section {
+  padding: 95px clamp(25px, 9vw, 132px);
+  background: #fff8f9;
+}
+
+.shelf-heading {
+  margin-bottom: 32px;
+}
+
+.coming-soon {
+  font-size: 8px;
+  letter-spacing: .18em;
+  color: #aa8c91;
+}
+
+.coming-soon b {
+  font-size: 15px;
+  color: var(--pink);
+  margin-left: 8px;
+}
+
+.product-shelf-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.product-placeholder {
+  min-width: 0;
+}
+
+.placeholder-image {
+  height: 270px;
+
+  background: linear-gradient(145deg, #f5e7e8, #f0dfe1);
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.placeholder-image::before {
+  content: "";
+
+  position: absolute;
+
+  width: 170px;
+  height: 170px;
+
+  border: 1px solid #fff9;
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 18px #ffffff1c,
+    0 0 0 38px #ffffff15;
+}
+
+.placeholder-image span {
+  font-size: 8px;
+  letter-spacing: .16em;
+  color: #a17d83;
+  z-index: 1;
+}
+
+.placeholder-image b {
+  position: absolute;
+  bottom: 13px;
+  right: 15px;
+
+  font: italic 13px var(--serif);
+  color: #a17d83;
+}
+
+.placeholder-two {
+  background: linear-gradient(145deg, #f2e9e1, #ead9ce);
+}
+
+.placeholder-three {
+  background: linear-gradient(145deg, #f4e7ed, #ead6df);
+}
+
+.placeholder-four {
+  background: linear-gradient(145deg, #f2e9e8, #e7d8d4);
+}
+
+.placeholder-info {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 13px 2px;
+
+  font-size: 8px;
+  letter-spacing: .12em;
+  color: #987f7b;
+}
+
+.shelf-footnote {
+  text-align: center;
+  font: italic 14px var(--serif);
+  color: #a48c88;
+  margin: 28px 0 0;
+}
+
+/* =========================================
+   OUR STORY
+========================================= */
+
+.story-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: clamp(45px, 9vw, 130px);
+  align-items: center;
+
+  padding: 110px clamp(25px, 13vw, 185px);
+}
+
+.story-art {
+  height: 390px;
+
+  background: linear-gradient(140deg, #f5e5e8, #f1dce1);
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.story-art::before,
+.story-art::after {
+  content: "";
+
+  position: absolute;
+
+  border: 1px solid #fff9;
+  border-radius: 50%;
+
+  width: 320px;
+  height: 320px;
+}
+
+.story-art::after {
+  width: 250px;
+  height: 250px;
+}
+
+.story-frame {
+  width: 220px;
+  height: 285px;
+
+  border: 1px solid #fff9;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  z-index: 1;
+
+  color: #a97584;
+
+  box-shadow: 0 20px 40px #9c6c7720;
+}
+
+.story-star {
+  font-size: 35px;
+}
+
+.story-script {
+  font: italic 48px/.9 var(--serif);
+  text-align: center;
+  color: #fffaf9;
+  margin: 15px 0;
+}
+
+.story-small {
+  font-size: 7px;
+  letter-spacing: .2em;
+}
+
+.story-copy .eyebrow {
+  margin-bottom: 18px;
+}
+
+.story-copy h2 {
+  margin-bottom: 22px;
+}
+
+.story-copy > p:not(.eyebrow) {
+  font-size: 12px;
+  line-height: 2.1;
+  color: #887672;
+  max-width: 420px;
+}
+
+.text-link {
+  display: inline-flex;
+  gap: 25px;
+  align-items: center;
+
+  border-bottom: 1px solid #d9b3bd;
+
+  padding: 12px 0 8px;
+  margin-top: 15px;
+
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.text-link span {
+  color: var(--pink-dark);
+  font-size: 15px;
+}
+
+/* =========================================
+   HANDMADE BRAND SECTION
+========================================= */
+
+.handmade-section {
+  text-align: center;
+
+  padding: 90px 20px 100px;
+
+  background:
+    radial-gradient(ellipse at center, #fff0f3, transparent 65%),
+    #fffafb;
+}
+
+.handmade-section .eyebrow {
+  margin-bottom: 18px;
+}
+
+.handmade-section h2 {
+  font: 500 clamp(34px, 4.4vw, 56px)/1.2 var(--serif);
+  margin: 0;
+}
+
+.handmade-values {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 23px;
+
+  margin-top: 35px;
+
+  font-size: 8px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: #8e7774;
+}
+
+.handmade-values i {
+  font-style: normal;
+  color: var(--pink);
+  font-size: 13px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.site-footer {
+  background: #342522;
+  color: #fff5f4;
+
+  padding: 55px clamp(25px, 9vw, 132px) 20px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 42px;
+}
+
+/* Footer logo */
+
+.footer-logo {
+  width: 125px;
+  height: 85px;
+
+  object-fit: contain;
+  object-position: center;
+
+  /*
+    The source logo is dark on a light background.
+    This filter makes it light for the dark footer.
+  */
+  filter: grayscale(1) brightness(0) invert(1);
+
+  mix-blend-mode: screen;
+}
+
+.footer-top p {
+  font: italic 13px var(--serif);
+  color: #d9bfc0;
+  margin: 8px 0;
+}
+
+.footer-social {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  text-align: right;
+}
+
+.footer-social span {
+  font-size: 8px;
+  letter-spacing: .18em;
+  color: #caaeb0;
+}
+
+.footer-social a {
+  font: italic 20px var(--serif);
+  color: #f1b7c8;
+}
+
+.footer-social a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ffffff25;
+  padding-top: 18px;
+
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 8px;
+  letter-spacing: .08em;
+  color: #c8b1b0;
+}
+
+.footer-bottom a {
+  color: #f0c0ce;
+}
+
+/* =========================================
+   SHOPPING BAG DRAWER
+========================================= */
+
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 50;
+
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.cart-overlay.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.overlay-backdrop {
+  position: absolute;
+  inset: 0;
+
+  background: #2b171b70;
+
+  border: 0;
+  opacity: 0;
+
+  transition: opacity .3s;
+}
+
+.cart-overlay.is-open .overlay-backdrop {
+  opacity: 1;
+}
+
+.cart-drawer {
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  height: 100%;
+  width: min(440px, 100%);
+
+  background: #fffdfc;
+
+  padding: 32px;
+
+  transform: translateX(102%);
+
+  transition: transform .35s cubic-bezier(.2, .75, .25, 1);
+
+  box-shadow: -20px 0 60px #2813191a;
+
+  overflow-y: auto;
+}
+
+.cart-overlay.is-open .cart-drawer {
+  transform: translateX(0);
+}
+
+.drawer-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 22px;
+}
+
+.drawer-heading .eyebrow {
+  margin-bottom: 8px;
+}
+
+.drawer-heading h2 {
+  font: 500 27px var(--serif);
+  margin: 0;
+}
+
+.drawer-heading h2 span {
+  font: 11px var(--sans);
+  color: #a48c88;
+}
+
+.close-button {
+  border: 0;
+  background: none;
+
+  font-size: 29px;
+  color: #8c7773;
+
+  cursor: pointer;
+}
+
+.empty-bag {
+  text-align: center;
+  padding: 90px 10px 50px;
+}
+
+.empty-bag-icon {
+  font: 60px var(--serif);
+  color: #e4a4b6;
+}
+
+.empty-bag h3 {
+  font: 500 26px var(--serif);
+  margin: 16px 0 7px;
+}
+
+.empty-bag p {
+  font-size: 11px;
+  color: #98847f;
+  margin: 0 0 25px;
+}
+
+.empty-bag .primary-button {
+  gap: 18px;
+}
+
+.drawer-note {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+
+  text-align: center;
+
+  font-size: 9px;
+  color: #a48e89;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotateY(-13deg) rotateX(5deg);
+  }
+
+  50% {
+    transform: translateY(-13px) rotateY(-8deg) rotateX(3deg);
+  }
+}
+
+/* =========================================
+   TABLET RESPONSIVENESS
+========================================= */
+
+@media (max-width: 900px) {
+
+  .site-header {
+    padding: 0 28px;
+  }
+
+  .wordmark {
+    width: 125px;
+    height: 76px;
+  }
+
+  .hero {
+    padding-left: 7vw;
+    padding-right: 7vw;
+  }
+
+  .section,
+  .shelf-section {
+    padding-left: 6vw;
+    padding-right: 6vw;
+  }
+
+  .category-visual {
+    height: 280px;
+  }
+
+  .product-placeholder .placeholder-image {
+    height: 220px;
+  }
+
+  .story-section {
+    padding-left: 8vw;
+    padding-right: 8vw;
+    gap: 45px;
+  }
+}
+
+/* =========================================
+   MOBILE RESPONSIVENESS
+========================================= */
+
+@media (max-width: 680px) {
+
+  .announcement {
+    font-size: 8px;
+    letter-spacing: .08em;
+  }
+
+  .site-header {
+    min-height: 76px;
+
+    grid-template-columns: 1fr auto 1fr;
+
+    padding: 0 18px;
+  }
+
+  /* Mobile menu button */
+
+  .mobile-menu-button {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    width: 28px;
+    padding: 5px 0;
+  }
+
+  .mobile-menu-button span {
+    height: 1px;
+    width: 21px;
+    background: var(--ink);
+  }
+
+  /* Mobile logo */
+
+  .wordmark {
+    width: 105px;
+    height: 66px;
+    grid-column: 2;
+  }
+
+  .bag-label {
+    display: none;
+  }
+
+  /* Mobile navigation dropdown */
+
+  .main-nav {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    top: 76px;
+
+    background: #fffdfc;
+
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px 25px 26px;
+
+    border-bottom: 1px solid var(--line);
+
+    gap: 22px;
+
+    box-shadow: 0 15px 25px #5130380c;
+  }
+
+  .main-nav.is-open {
+    display: flex;
+  }
+
+  /* Mobile hero */
+
+  .hero {
+    grid-template-columns: 1fr;
+
+    padding: 66px 26px 65px;
+
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: 57px;
+  }
+
+  .hero-description {
+    font-size: 12px;
+  }
+
+  .hero-art {
+    height: 340px;
+    margin-top: 12px;
+  }
+
+  .hero-orbit {
+    transform: scale(.78) rotate(-24deg);
+  }
+
+  .orbit-two {
+    transform: scale(.78) rotate(27deg);
+  }
+
+  .hero-sculpture {
+    transform: scale(.82) rotateY(-13deg);
+
+    animation: floatMobile 6s ease-in-out infinite;
+  }
+
+  .hero-bottom-label {
+    left: 26px;
+    bottom: 18px;
+    font-size: 7px;
+  }
+
+  .hero-stamp {
+    left: 7%;
+    top: 9%;
+
+    transform: scale(.8) rotate(-13deg);
+  }
+
+  /* Brand values */
+
+  .intro-strip {
+    padding: 18px 15px;
+    gap: 10px;
+  }
+
+  .intro-strip div {
+    gap: 6px;
+    flex-direction: column;
+  }
+
+  .intro-strip p {
+    font-size: 7px;
+    text-align: center;
+    margin: 0;
+  }
+
+  .intro-strip span {
+    font-size: 11px;
+  }
+
+  /* Sections */
+
+  .section,
+  .shelf-section {
+    padding: 75px 22px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    gap: 18px;
+
+    flex-direction: column;
+
+    margin-bottom: 28px;
+  }
+
+  .section-heading h2,
+  .story-copy h2 {
+    font-size: 39px;
+  }
+
+  .section-aside {
+    font-size: 13px;
+  }
+
+  /* Categories */
+
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .category-visual {
+    height: 330px;
+  }
+
+  .category-meta {
+    padding: 13px 3px 8px;
+  }
+
+  /* Product shelves */
+
+  .product-shelf-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 23px 13px;
+  }
+
+  .placeholder-image {
+    height: 210px !important;
+  }
+
+  .coming-soon {
+    font-size: 7px;
+  }
+
+  /* Our story */
+
+  .story-section {
+    grid-template-columns: 1fr;
+
+    padding: 75px 22px;
+    gap: 40px;
+  }
+
+  .story-art {
+    height: 330px;
+  }
+
+  .story-copy h2 {
+    font-size: 37px;
+  }
+
+  /* Handmade */
+
+  .handmade-section {
+    padding: 75px 18px;
+  }
+
+  .handmade-section h2 {
+    font-size: 38px;
+  }
+
+  .handmade-values {
+    gap: 9px;
+    flex-wrap: wrap;
+    font-size: 7px;
+  }
+
+  /* Footer */
+
+  .site-footer {
+    padding: 42px 22px 18px;
+  }
+
+  .footer-top {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    width: 105px;
+    height: 75px;
+  }
+
+  .footer-social a {
+    font-size: 16px;
+  }
+
+  .footer-bottom {
+    font-size: 7px;
+    gap: 12px;
+    line-height: 1.7;
+  }
+
+  /* Shopping bag */
+
+  .cart-drawer {
+    padding: 25px 22px;
+  }
+}
+
+/* Mobile floating animation */
+
+@keyframes floatMobile {
+  0%, 100% {
+    transform: translateY(0) scale(.82) rotateY(-13deg);
+  }
+
+  50% {
+    transform: translateY(-10px) scale(.82) rotateY(-8deg);
+  }
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+  .hero h1 {
+    font-size: 47px;
+  }
+
+  .wordmark {
+    width: 92px;
+  }
+
+  .category-visual {
+    height: 290px;
+  }
+
+  .placeholder-image {
+    height: 175px !important;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+
+  .footer-social {
+    text-align: left;
+  }
+
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+}

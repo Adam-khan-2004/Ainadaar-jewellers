@@ -1,0 +1,17 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="600" height="750" viewBox="0 0 600 750">
+  <rect width="600" height="750" fill="#fff1f4"/>
+  <circle cx="300" cy="310" r="100"
+          fill="none" stroke="#e5b5c2" stroke-width="3"/>
+  <text x="300" y="490" text-anchor="middle"
+        fill="#c87592" font-size="26"
+        font-family="Georgia, serif">
+    AINADAR
+  </text>
+  <text x="300" y="530" text-anchor="middle"
+        fill="#a48c88" font-size="16"
+        font-family="Arial, sans-serif">
+    HANDMADE WITH LOVE
+  </text>
+</svg>
