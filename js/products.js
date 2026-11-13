@@ -4,7 +4,7 @@
 
 // ---- Image settings: change here ONLY if your files differ ----
 const IMG_BASE = "assets/images/product/earings/";   // your folder is still spelled "earings"
-const EXT = ".JPEG ";                                  // must match the real file extension exactly
+const EXT = ".jpeg ";                                  // must match the real file extension exactly
 
 const clayImg = n => `${IMG_BASE}clay_earings/c${n}${EXT}`;
 const pearlImg = n => `${IMG_BASE}pearl_earings/p${n}${EXT}`;
